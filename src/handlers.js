@@ -24,3 +24,11 @@ export function completeTask(req, res, id) {
   res.writeHead(200, { "Content-Type": "application/json" });
   res.end(JSON.stringify(task));
 }
+
+export function updateTitle(req, res, id, body) {
+  const parsed = JSON.parse(body);
+  const task = store.find(Number(id));
+  task.title = parsed.title;
+  res.writeHead(200, { "Content-Type": "application/json" });
+  res.end(JSON.stringify(task));
+}
